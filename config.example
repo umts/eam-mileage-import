@@ -1,0 +1,6 @@
+source=https://example.com/usage.csv
+fa_gui=C:\\Path\\To\\fa_gui.exe
+fa_ip=192.0.2.1
+fa_port=1234
+fa_user=USERNAME
+fa_password=PASSWORD
