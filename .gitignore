@@ -8,6 +8,7 @@ mileage.cmd
 usage.csv
 
 # Backups and logs
+clientid
 usage[0-9][0-9].csv
 usage.err
 usage.log

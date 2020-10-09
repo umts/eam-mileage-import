@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 # Read in the config file
-$config = Get-Content $(Get-ChildItem "$pwd/config") | ConvertFrom-StringData
+$config = Get-Content $(Get-ChildItem "$pwd\config") | ConvertFrom-StringData
 
 # Download the file
 $dest = "$pwd\usage.csv"
