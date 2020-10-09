@@ -27,7 +27,7 @@ $err = Get-ChildItem "$pwd\usage.err"
 
 # Launch FA
 $fa_args = @(
-  "$($config.fa_ip):$($config.fa_port)",
+  "$($config.fa_address):$($config.fa_port)",
   "$($config.fa_user)/$($config.fa_password)",
   $cmd_file
 )
