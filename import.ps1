@@ -37,7 +37,7 @@ Add-Content $log "[$(Get-Date -Format s)] - Starting Import"
 Add-Content $log "[$(Get-Date -Format s)] - Import Complete"
 
 # Archive inputs/outputs
-$day = (Get-Date).Day
+$day = Get-Date -Format dd
 cp -Path $dest -Destination ($dest.BaseName + $day + $dest.Extension)
 
 Get-Content $log | Select -Last 500 | Set-Content $log

@@ -1,2 +1,14 @@
+# Configuration file
 config
+
+# Auto-generated "command" file for EAM
 mileage.cmd
+
+# Downloaded mileage CSV
+usage.csv
+
+# Backups and logs
+usage[0-9][0-9].csv
+usage.err
+usage.log
+usage.rej
