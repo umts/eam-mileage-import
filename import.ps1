@@ -22,10 +22,10 @@ $cmd_file = "$pwd\mileage.cmd"
 New-Item $cmd_file -type file -force -value "2151 $dest"
 
 # Create output files
-Write-Output $null >> "$pwd\usage.log"
-Write-Output $null >> "$pwd\usage.err"
-$log = Get-ChildItem "$pwd\usage.log"
-$err = Get-ChildItem "$pwd\usage.err"
+If (Test-Path "$pwd\usage.log") { $log = Get-ChildItem "$pwd\usage.log" }
+Else { $log = New-Item -ItemType File -Path "$pwd\usage.log" }
+If (Test-Path "$pwd\usage.err") { $err = Get-ChildItem "$pwd\usage.err" }
+Else { $err = New-Item -ItemType File -Path "$pwd\usage.err" }
 
 # Launch FA
 $fa_args = @(
