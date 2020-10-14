@@ -1,4 +1,6 @@
 $ErrorActionPreference = "Stop"
+[Net.ServicePointManager]::SecurityProtocol =
+  [Net.SecurityProtocolType]::Tls12 -bor [Net.SecurityProtocolType]::Tls13
 
 # Read in the config file
 $config = Get-Content $(Get-ChildItem "$pwd\config") | ConvertFrom-StringData
