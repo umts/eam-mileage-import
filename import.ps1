@@ -14,16 +14,17 @@ $dest = Get-ChildItem $dest
 
 # Find and replace for Absolute paths
 (Get-Content $dest) |
-Foreach-Object {$_ -replace "#DIRECTORY#", $pwd} |
+Foreach-Object { $_ -replace "#DIRECTORY#", $pwd } |
 Set-Content $dest
 
 # Create "command" file
 $cmd_file = "$pwd\mileage.cmd"
-New-Item $cmd_file -type file -force -value "2151 $dest"
+New-Item $cmd_file -ItemType File -Force -Value "2151 $dest"
 
 # Create output files
 If (Test-Path "$pwd\usage.log") { $log = Get-ChildItem "$pwd\usage.log" }
 Else { $log = New-Item -ItemType File -Path "$pwd\usage.log" }
+
 If (Test-Path "$pwd\usage.err") { $err = Get-ChildItem "$pwd\usage.err" }
 Else { $err = New-Item -ItemType File -Path "$pwd\usage.err" }
 
@@ -40,7 +41,7 @@ Add-Content $log "[$(Get-Date -Format s)] - Import Complete"
 
 # Archive inputs/outputs
 $day = Get-Date -Format dd
-cp -Path $dest -Destination ($dest.BaseName + $day + $dest.Extension)
+Copy-Item -Path $dest -Destination ($dest.BaseName + $day + $dest.Extension)
 
 Get-Content $log | Select -Last 500 | Set-Content $log
 Get-Content $err | Select -Last 500 | Set-Content $err
