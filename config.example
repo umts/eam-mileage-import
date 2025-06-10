@@ -4,3 +4,7 @@ fa_address=192.0.2.1
 fa_port=1234
 fa_user=USERNAME
 fa_password=PASSWORD
+# Optional, if unspecified no email will be sent
+#smtp_server=smtp.example.com
+email_to=alice@example.com,bob@example.com
+email_from=noreply@example.com
