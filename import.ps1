@@ -28,6 +28,9 @@ Else { $log = New-Item -ItemType File -Path "$pwd\usage.log" }
 If (Test-Path "$pwd\usage.err") { $err = Get-ChildItem "$pwd\usage.err" }
 Else { $err = New-Item -ItemType File -Path "$pwd\usage.err" }
 
+If (Test-Path "$pwd\usage.rej") { $rej = Get-ChildItem "$pwd\usage.rej" }
+Else { $rej = New-Item -ItemType File -Path "$pwd\usage.rej" }
+
 # Launch FA
 $fa_args = @(
   "$($config.fa_address):$($config.fa_port)",
@@ -40,12 +43,11 @@ Add-Content $log "[$(Get-Date -Format s)] - Starting Import"
 Add-Content $log "[$(Get-Date -Format s)] - Import Complete"
 
 # Analyze rejections
-$rej = "$pwd\usage.rej"
 $errors = @()
 
 # Reject file contains rejected lines with a 2-line header.
-if ((Test-Path $rej) -and (Get-Content $rej).Length -gt 2) {
-  $rej_lines = Get-Content $rej | Select-Object -Skip 2
+if (($rej_lines = Get-Content $rej).Length -gt 2) {
+  $rej_lines = $rej_lines | Select-Object -Skip 2
   $rej_count = $rej_lines.Count
 
   $err_lines = Get-Content $err | Select-Object -Last $rej_count
