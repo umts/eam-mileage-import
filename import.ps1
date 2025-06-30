@@ -69,14 +69,14 @@ if (($rej_lines = Get-Content $rej).Length -gt 2) {
 
   # Send email if there are errors and there are email settings configured
   if ($errors.Count -gt 0 -and $config.smtp_server) {
-    $mail_body = "The following records were rejected by FA during import:`n`n"
+    $mail_body = "The following mileage records were rejected by FA during import:`n`n"
     foreach ($e in $errors) {
       $mail_body += "Rejected: $($e.Rejected)`nError: $($e.Error)`n`n"
     }
 
     Send-MailMessage -To ($config.email_to -split "\s*,\s*") `
                      -From $config.email_from `
-                     -Subject "FA Import Errors" `
+                     -Subject "FA Mileage Import Errors" `
                      -Body $mail_body `
                      -SmtpServer $config.smtp_server `
   }
