@@ -16,6 +16,11 @@ appropriate:
 * `fa_user`: The username of a user that has rights to insert meter readings
   (and ideally no other permissions).
 * `fa_password`: That user's password.
+* `smtp_server`: The SMTP server to use for sending email notifications for
+  some rejection errors. If unset, no email will be sent.
+* `email_to`: The email address(es) to send notifications to, comma-separated.
+* `email_from`: The email address to use as the "from" address in the
+  notification emails.
 
 # Input file format
 
@@ -53,3 +58,4 @@ _major_ modifications to the screens and controls. It was generated using the
   this file because you could, in theory, manually edit the file and only
   re-process the rejections.
 * `usageNN.csv` a backup copy of the downloaded file from day NN of the month.
+* `usageNN.rej` a backup copy of the rejection file from day NN of the month.
